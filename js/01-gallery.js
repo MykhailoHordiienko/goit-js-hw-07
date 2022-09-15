@@ -7,8 +7,6 @@ const galleryRef = document.querySelector(".gallery");
 
 const galleryMurkup = galleryCreateMurkup(galleryItems);
 
-galleryRef.insertAdjacentHTML("beforeend", galleryMurkup);
-
 function galleryCreateMurkup(arr) {
   return arr
     .map(({ preview, original, description }) => {
@@ -25,6 +23,8 @@ function galleryCreateMurkup(arr) {
     })
     .join("");
 }
+
+galleryRef.insertAdjacentHTML("beforeend", galleryMurkup);
 
 galleryRef.addEventListener("click", onGalleryItemClick);
 
@@ -46,7 +46,6 @@ function onGalleryItemClick(evt) {
       if (evt.code !== "Escape") {
         return;
       }
-      console.log(evt.code);
       instance.close();
     },
     { once: true }
